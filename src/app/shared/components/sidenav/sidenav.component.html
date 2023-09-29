@@ -1,0 +1,42 @@
+<mat-sidenav-container class="example-container" [hasBackdrop]="false">
+    <mat-sidenav mode="side" opened class="sidenav" (mouseenter)="toggleCollapse()" (mouseleave)="closeSidenav()" [ngClass]="collapsed ? 'sidenav-collapsed': '' ">
+        <div class="logo-container">
+            <img src="./assets/logos/sipop-white.png" alt="" width="80">
+        </div>
+        <mat-tree [dataSource]="dataSource" [treeControl]="treeControl" class="sidenav__tree">
+            <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle class="sidenav__tree--item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                <b></b>
+                <b></b>
+                <button mat-button class="sidenav-link-text sidenav__tree--btn" [routerLink]="node.routeLink" >
+                    <i class="sidenav-link-icon fa-solid " [class]="node.icon"></i>
+                    <span *ngIf="collapsed" @fadeInOut>{{ node.label }}</span>
+                </button>
+            </mat-tree-node>
+
+            <mat-nested-tree-node *matTreeNodeDef="let node; when: hasChild">
+                    <div class="mat-tree-node">
+                        <button class="sidenav-link-text"  mat-button [attr.aria-label]="'Toggle ' + node.item" matTreeNodeToggle>
+                            <i class="sidenav-link-icon fa-solid " [class]="node.icon"></i>
+                            <span *ngIf="collapsed" class="sidenav-link-text" @fadeInOut>{{ node.label }}</span>
+                            <mat-icon *ngIf="collapsed" class="mat-icon-rtl-mirror" iconPositionEnd @fadeInOut>
+                                {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+                            </mat-icon>
+                        </button>
+                    </div>
+                    <div [class.sidenav__tree-invisible]="!treeControl.isExpanded(node)"role="group">
+                        <ng-container matTreeNodeOutlet></ng-container>
+                    </div>
+            </mat-nested-tree-node>
+        </mat-tree>
+        <div class="option-app">
+            <div class="sidenav-nav-exit" (click)="exitSesion()">
+              <a class="sidenav-nav-exit__btn"   >
+                <i class="fa-solid fa-arrow-right-from-bracket"></i> Cerrar Sesión</a>
+            </div>
+        </div>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <!--  -->
+        hola mundo
+    </mat-sidenav-content>
+</mat-sidenav-container>

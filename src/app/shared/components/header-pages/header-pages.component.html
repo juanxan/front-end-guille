@@ -1,0 +1,28 @@
+<header class="center--items">
+    <nav class="header center--items">
+        <div class="header--start center--items col-4">
+            <a routerLink="home" class=" text-decoration-none">
+                <img src="./assets/img/logo.svg" alt="magueis" class="" width="100" >
+            </a>
+        </div>
+        <ul class="header--center col-4 center--items">
+            <li class="col-4">
+                <a routerLink="home">Inicio</a>
+            </li>
+            <li class="col-4">
+                <a routerLink="productos">Productos</a>
+            </li>
+            <li class="col-4">
+                <a routerLink="about">Acerca de nosotros</a>
+            </li>
+            <li class="col-4">
+                <a routerLink="contact">Contactenos</a>
+            </li>
+        </ul>
+        <div class="header--end center--items col-4">
+            <button (click)="toggleCollapse()" mat-raised-button>
+                <mat-icon>shopping_cart</mat-icon>
+            </button>
+        </div>
+    </nav>
+</header>

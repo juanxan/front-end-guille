@@ -1,0 +1,11 @@
+.productos{
+    display: flex;
+    flex-direction: row;
+    padding: 1rem;
+    &__filtros{
+        width: 15%;
+    }
+    &__items{
+        width: 85%;
+    }
+}

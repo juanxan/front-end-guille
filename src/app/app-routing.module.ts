@@ -1,10 +1,30 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { Route, Routes } from "@angular/router";
 
-const routes: Routes = [];
-
-@NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
-})
-export class AppRoutingModule { }
+export const routes: Routes =  [
+  {
+    path: 'admin',
+    loadComponent: ()=> import('./admin/admin.component').then(m => m.AdminComponent),
+    title: 'Ebanisteria - Inicio',
+    loadChildren: () => import('./admin/routes-admin')
+  },
+  {
+    path: 'pages',
+    loadComponent: ()=> import('./pages/pages.component').then(m => m.PagesComponent),
+    title: 'Ebanisteria - Inicio',
+    loadChildren: () => import('./pages/routing-pages')
+  },
+  {
+    path: 'auth',
+    title: 'Ebanisteria - Inicio',
+    loadChildren: () => import('./auth/routing-auth')
+  },
+  {
+    path: '',
+    redirectTo: 'pages',
+    pathMatch: 'full'
+  },
+  {
+    path: '**',
+    redirectTo: 'home'
+  }
+] as Route[];

@@ -1,0 +1,49 @@
+<section class="categorias">
+    <mat-card class="categorias__form">
+        <mat-card-content>
+            <form class="categorias__form" [formGroup]="formularioCategory" (ngSubmit)="proccesCategorias(formularioCategory.value)">
+                <h1>Crear categoría</h1>
+                <div class="categorias__form--item">
+                    <mat-form-field appearance="fill" class="categorias__form--input" color="primary">
+                        <mat-label>idcategoria</mat-label>
+                        <input matInput formControlName="idcategoria" placeholder="Produc..." >
+                    </mat-form-field>
+                </div>
+                <div class="categorias__form--item">
+                    <mat-form-field appearance="fill" class="categorias__form--input" color="primary">
+                        <mat-label>nombre</mat-label>
+                        <input matInput formControlName="nombre" placeholder="nombre..." >
+                    </mat-form-field>
+                    <div class="validation-error">
+                        <ng-container *ngFor="let validation of validationMessages.nombre">
+                          <div *ngIf="formularioCategory.get('nombre')?.hasError(validation.type) && (formularioCategory.get('nombre')?.dirty || formularioCategory.get('nombre')?.touched)">
+                            {{ validation.message }}
+                          </div>
+                        </ng-container>
+                    </div>
+                </div>
+                <div class="categorias__form--item">
+                    <mat-form-field appearance="fill" class="categorias__form--input" color="primary">
+                        <mat-label>Descripción</mat-label>
+                        <textarea matInput formControlName="descripcion"></textarea>
+                    </mat-form-field>
+                    <div class="validation-error">
+                        <ng-container *ngFor="let validation of validationMessages.descripcion">
+                          <div *ngIf="formularioCategory.get('descripcion')?.hasError(validation.type) && (formularioCategory.get('descripcion')?.dirty || formularioCategory.get('descripcion')?.touched)">
+                            {{ validation.message }}
+                          </div>
+                        </ng-container>
+                    </div>
+                </div>
+                <div class="categorias__form--item">
+                    <button [disabled]="!formularioCategory.valid" mat-raised-button extended color="primary" type="submit" class="categorias__form--btn">
+                        Crear categoria
+                    </button>
+                </div>
+                <div>
+                      <img src="assets/img/categoriass.png" alt="">
+                  </div>
+              </form>
+        </mat-card-content>
+    </mat-card>
+</section>

@@ -1,0 +1,31 @@
+<section class="contact">
+    <mat-card class="contact__card">
+        <mat-card-header>
+          <mat-card-title>Contáctenos</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <form [formGroup]="formularioContact" class="contact__form">
+                <mat-form-field appearance="outline">
+                    <mat-label>Nombre</mat-label>
+                    <input formControlName="nombre" matInput >
+                    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Correo</mat-label>
+                    <input formControlName="correo" matInput >
+                    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Teléfono</mat-label>
+                    <input formControlName="telefono" matInput >
+                    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Descripción</mat-label>
+                    <textarea formControlName="mensaje" matInput></textarea>
+                </mat-form-field>
+                <button mat-raised-button [disabled]="!formularioContact.valid" (click)="sendContact()" color="primary">Enviar</button>
+            </form>
+        </mat-card-content>
+    </mat-card>
+</section>

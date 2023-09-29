@@ -1,0 +1,48 @@
+<mat-drawer-container class="shopping" [hasBackdrop]="false">
+  <mat-drawer position="end" mode="over" [(opened)]="opened" class="shopping__container">
+    <div class="shopping__header">
+      <h3>Carrito de compras</h3>
+      <button mat-button (click)="toggleCollapse()">
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+    <section class="shopping__productos">
+      <mat-card *ngFor="let producto of productos; let index">
+        <mat-card-header>
+            <mat-card-title>{{producto.nombre}}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <p>{{producto.categoria_idcategoria.nombre}}</p>
+          <p>${{ producto.precio | number}}</p>
+        </mat-card-content>
+        <mat-card-actions class="shopping__productos__btn">
+          <mat-form-field>
+            <mat-label>Cantidad</mat-label>
+            <input matInput type="number" [(ngModel)]="producto.cantidad" (input)="processTotal()">
+          </mat-form-field>
+          <button mat-button (click)="deleteProduct(index)">
+            <mat-icon>close</mat-icon> Eliminar
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </section>
+    <section class="shopping__footer">
+      <mat-card class="shopping__footer--container">
+        <div class="">
+          <h4><strong>Precio Total:</strong></h4>
+          <strong>{{total | number}}</strong>
+        </div>
+        <button mat-raised-button color="primary" (click)="saveProduct()">
+          <mat-icon>check_circle_outline</mat-icon> Finalizar compra
+        </button>
+      </mat-card>
+    </section>
+    
+
+  </mat-drawer>
+  <mat-drawer-content>
+      <app-header-pages (eventCloseModal)="toggleCollapse()"></app-header-pages>
+      <router-outlet></router-outlet>
+      <app-footer-pages></app-footer-pages>
+    </mat-drawer-content>
+  </mat-drawer-container>

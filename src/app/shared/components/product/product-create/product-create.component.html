@@ -1,0 +1,92 @@
+<section class="productos">
+    <mat-card class="productos__form">
+        <mat-card-content>
+            <form class="productos__form" [formGroup]="formularioTicket" (ngSubmit)="proccesproductos(formularioTicket.value)">
+                <h1>Crear producto</h1>
+                <div class="productos__form--item">
+                    <mat-form-field appearance="fill" class="productos__form--input" color="primary">
+                        <mat-label>idproducto</mat-label>
+                        <input matInput formControlName="idproducto" placeholder="Produc..." >
+                    </mat-form-field>
+                </div>
+                <div class="productos__form--item">
+                    <mat-form-field appearance="fill" class="productos__form--input" color="primary">
+                        <mat-label>Categoria</mat-label>
+                        <mat-select formControlName="categoria_idcategoria">
+                            <mat-option [value]="categoria"  *ngFor="let categoria of categoriaData">
+                                {{categoria.nombre}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <div class="validation-error">
+                        <ng-container *ngFor="let validation of validationMessages.categoria_idcategoria">
+                          <div *ngIf="formularioTicket.get('categoria_idcategoria')?.hasError(validation.type) && (formularioTicket.get('categoria_idcategoria')?.dirty || formularioTicket.get('categoria_idcategoria')?.touched)">
+                            {{ validation.message }}
+                          </div>
+                        </ng-container>
+                    </div>
+                </div>
+                <div class="productos__form--item">
+                    <mat-form-field appearance="fill" class="productos__form--input" color="primary">
+                        <mat-label>nombre</mat-label>
+                        <input matInput formControlName="nombre" placeholder="nombre..." >
+                    </mat-form-field>
+                    <div class="validation-error">
+                        <ng-container *ngFor="let validation of validationMessages.nombre">
+                          <div *ngIf="formularioTicket.get('nombre')?.hasError(validation.type) && (formularioTicket.get('nombre')?.dirty || formularioTicket.get('nombre')?.touched)">
+                            {{ validation.message }}
+                          </div>
+                        </ng-container>
+                    </div>
+                </div>
+                <div class="productos__form--item">
+                    <mat-form-field appearance="fill" class="productos__form--input" color="primary">
+                        <mat-label>Descripción</mat-label>
+                        <textarea matInput formControlName="description"></textarea>
+                    </mat-form-field>
+                    <div class="validation-error">
+                        <ng-container *ngFor="let validation of validationMessages.description">
+                          <div *ngIf="formularioTicket.get('description')?.hasError(validation.type) && (formularioTicket.get('description')?.dirty || formularioTicket.get('description')?.touched)">
+                            {{ validation.message }}
+                          </div>
+                        </ng-container>
+                    </div>
+                </div>
+                <div class="productos__form--item">
+                    <mat-form-field appearance="fill" class="productos__form--input" color="primary">
+                        <mat-label>image</mat-label>
+                        <input matInput formControlName="image" placeholder="image..." >
+                    </mat-form-field>
+                    <div class="validation-error">
+                        <ng-container *ngFor="let validation of validationMessages.image">
+                          <div *ngIf="formularioTicket.get('image')?.hasError(validation.type) && (formularioTicket.get('image')?.dirty || formularioTicket.get('image')?.touched)">
+                            {{ validation.message }}
+                          </div>
+                        </ng-container>
+                    </div>
+                </div>
+                <div class="productos__form--item">
+                    <mat-form-field appearance="fill" class="productos__form--input" color="primary">
+                        <mat-label>precio</mat-label>
+                        <input matInput type="number" formControlName="precio" placeholder="image..." >
+                    </mat-form-field>
+                    <div class="validation-error">
+                        <ng-container *ngFor="let validation of validationMessages.precio">
+                          <div *ngIf="formularioTicket.get('precio')?.hasError(validation.type) && (formularioTicket.get('precio')?.dirty || formularioTicket.get('precio')?.touched)">
+                            {{ validation.message }}
+                          </div>
+                        </ng-container>
+                    </div>
+                </div>
+                <div class="productos__form--item">
+                    <button [disabled]="!formularioTicket.valid" mat-raised-button extended color="primary" type="submit" class="productos__form--btn">
+                        Crear producto
+                    </button>
+                </div>
+                <div>
+                      <img src="assets/img/productoss.png" alt="">
+                  </div>
+              </form>
+        </mat-card-content>
+    </mat-card>
+</section>

@@ -1,0 +1,33 @@
+<div class="productos">
+    <aside class="productos__filtros">
+        <h2>Categorias</h2>
+        <mat-selection-list  [multiple]="false" [(ngModel)]="categoriaSeleccionada" >
+            <mat-list-option selected  [value]="">
+              Todas las categorías
+            </mat-list-option>
+            <mat-list-option *ngFor="let categoria of categorias" [value]="categoria.idcategoria">
+              {{categoria.nombre}}
+            </mat-list-option>
+          </mat-selection-list>
+    </aside>
+    <section class="productos__items center--items">
+        <div class="container">
+            <div class="list-items" >
+                    <div class="product" *ngFor="let producto of productos | filterByCategory: categoriaSeleccionada ">
+                        <figure class="img">
+                            <img src="./assets/img/closet.jpg" height="200"  width="270" alt="">
+                        </figure>
+                        <div class="detail-product">
+                            <div class="title">{{producto.nombre}}</div>
+                            <div class="price">$ {{producto.precio | number}} COP</div>
+                            <button (click)="saveProduct(producto)" mat-raised-button color="primary">
+                                <mat-icon>add_shopping_cart</mat-icon>
+                                Comprar
+                            </button>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </section>
+</div>
+

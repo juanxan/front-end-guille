@@ -1,0 +1,14 @@
+.productos{
+    display: flex;
+    justify-content: center;
+    &__form{
+        max-width: 800px;
+        width: 100%;
+        &--item{
+            width: 100%;
+        }
+        &--input{
+            width: 100%;
+        }
+    }
+}

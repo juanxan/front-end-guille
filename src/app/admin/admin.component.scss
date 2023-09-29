@@ -1,0 +1,124 @@
+.sidenav{
+  background-color: #3f51b5;
+  &__container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 95%;
+    padding: 1rem 0 0 0;
+  }
+  &__tree{
+      background-color: #3f51b5;
+
+      &-invisible {
+          display: none;
+      }
+      & ul, & li {
+          margin-top: 0;
+          margin-bottom: 0;
+          list-style-type: none;
+      }
+      & .mat-nested-tree-node div[role=group] {
+          padding-left: 12px;
+      }
+      & div[role=group] > .mat-tree-node {
+          padding-left: 12px;
+      }
+      &--btn{
+          width: 100%;
+          justify-content: initial;
+      }
+      &--item{
+          position: relative;
+          width: 220px;
+          &.active{
+              background-color: #fff;
+              border-radius: 12px 0 0 12px;
+              span,i, mat-icon{
+                  color: #3f51b5;
+              }
+              b:nth-child(1) {
+                  position: absolute;
+                  top: -16px;
+                  height: 16px;
+                  width: 100%;
+                  background: #fff;
+                  display: block;
+              }
+              b:nth-child(2)  {
+                  position: absolute;
+                  bottom: -16px;
+                  height: 16px;
+                  width: 100%;
+                  background: #fff;
+                  display: block;
+              }
+              b:nth-child(1)::before {
+                  content: '';
+                  position: absolute;
+                  top: 0;
+                  left: 0;
+                  width: 100%;
+                  height: 100%;
+                  border-bottom-right-radius: 20px;
+                  background: #3f51b5;
+              }
+              b:nth-child(2)::before {
+                  content: '';
+                  position: absolute;
+                  top: 0;
+                  left: 0;
+                  width: 100%;
+                  height: 100%;
+                  border-top-right-radius: 20px;
+                  background: #3f51b5;
+              }
+          }
+          & b:nth-child(1), &--item b:nth-child(2){
+              display:none;
+          }
+      }
+
+  }
+  &-link-icon {
+      font-size: 22px;
+      width: 2rem;
+      min-width: 2rem;
+      margin: 0 0.5rem;
+      text-align: center;
+  }
+  &-link-text {
+      margin-left: 0px;
+      font-weight: bold;
+      font-size: 14px;
+      span,i, mat-icon{
+          color: white;
+      }
+  }
+
+}
+
+.option-app{
+    display: flex;
+    justify-content: center;
+}
+.example-container {
+  position: absolute;
+  top: 64px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #eee;
+}
+
+
+.mat-mdc-icon-button.mat-mdc-button-base {
+  width: auto !important;
+  height: auto !important;
+}
+
+.admin{
+    &__container{
+        padding: 1rem;
+    }
+}

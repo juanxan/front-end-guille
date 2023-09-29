@@ -1,0 +1,36 @@
+<section class="login">
+    <div class="login__logo" >
+      <img (click)="goPages()" src="./assets/img/logo.svg" >
+    </div>
+    <div class="login__form">
+        <form class="custom-form" [formGroup]="formLogin">
+          <div class="login__title">
+            <h1>Bienvenido </h1>
+          </div>
+  
+          <mat-form-field appearance="fill" color="primary">
+            <mat-label>Usuario</mat-label>
+            <input type="email" matInput formControlName="username" >
+            <mat-icon matSuffix>person</mat-icon>
+          </mat-form-field>
+          <div>
+            <mat-form-field class="password" appearance="fill" color="primary">
+              <mat-label>Contraseña</mat-label>
+              <input  matInput [type]="showPassword ? 'text' : 'password'" formControlName="password"  >
+              <mat-icon (click)="changeType()" matSuffix>{{ showPassword ? 'lock_open' : 'lock' }}</mat-icon>
+            </mat-form-field>
+          </div> 
+  
+            <button mat-raised-button color="primary" (click)="login()">Ingresar</button>
+            <div class="login-support">
+              <p><em>Si presentas algún problema puedes escribirnos a <b>support@guille.com</b></em></p>
+            </div>
+          <div class="logo">
+            <img ngSrc="assets/img/products.png" alt="" fill>
+          </div>
+        </form>
+  
+    </div>
+   </section> 
+  
+  

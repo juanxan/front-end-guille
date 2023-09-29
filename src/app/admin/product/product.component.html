@@ -1,0 +1,85 @@
+<mat-tab-group animationDuration="0ms">
+    <mat-tab label="Productos">
+        <section>
+            <div class="">
+        
+                <mat-form-field color="primary">
+                    <mat-label>Buscar producto...</mat-label>
+                    <input matInput  [(ngModel)]="filtro" (keyup)="applyFilter($event)" placeholder="Produc..." #input>
+                  </mat-form-field>
+        
+                <button mat-raised-button color="primary" (click)="getProducts()" class="demo-button">
+                  Actualizar
+                </button>
+            
+            </div>
+              
+            <table mat-table [dataSource]="dataSource"  class="mat-elevation-z8 demo-table">
+            <!-- Position Column -->
+            <ng-container matColumnDef="idproducto">
+                <th mat-header-cell *matHeaderCellDef>Id</th>
+                <td mat-cell *matCellDef="let element">{{element.idproducto}}</td>
+            </ng-container>
+            
+            <!-- categoria Column -->
+            <ng-container matColumnDef="categoria">
+                <th mat-header-cell *matHeaderCellDef>Categoría</th>
+                <td mat-cell *matCellDef="let element">{{element.categoria_idcategoria.nombre}}</td>
+            </ng-container>
+            
+            <!-- Name Column -->
+            <ng-container matColumnDef="nombre">
+                <th mat-header-cell *matHeaderCellDef>Nombre</th>
+                <td mat-cell *matCellDef="let element">{{element.nombre}}</td>
+            </ng-container>
+            
+            <!-- Weight Column -->
+            <ng-container matColumnDef="description">
+                <th mat-header-cell *matHeaderCellDef>Descripción</th>
+                <td mat-cell *matCellDef="let element">{{element.description}}</td>
+            </ng-container>
+            
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="image">
+                <th mat-header-cell *matHeaderCellDef>Image</th>
+                <td mat-cell *matCellDef="let element">{{element.image}}</td>
+            </ng-container>
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="precio">
+                <th mat-header-cell *matHeaderCellDef>Precio</th>
+                <td mat-cell *matCellDef="let element">{{element.precio}}</td>
+            </ng-container>
+            <!-- editar Column -->
+            <ng-container matColumnDef="editar">
+                <th mat-header-cell *matHeaderCellDef>Editar</th>
+                <td mat-cell *matCellDef="let element">
+                    <button (click)="editProduct(element)" mat-raised-button color="accent">
+                        <mat-icon>edit</mat-icon>
+                        Editar
+                    </button>
+                </td>
+            </ng-container>
+            <!-- eliminar Column -->
+            <ng-container matColumnDef="eliminar">
+                <th mat-header-cell *matHeaderCellDef>Eliminar</th>
+                <td mat-cell *matCellDef="let element">
+                    <button mat-raised-button color="warn">
+                        <mat-icon>delete</mat-icon>
+                        Eliminar
+                    </button>
+                </td>
+            </ng-container>
+            
+            <tr mat-header-row *matHeaderRowDef="displayedColumns" class="module__header"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+        
+            <mat-paginator #paginator [pageSizeOptions]="[10, 50, 100]" aria-label="Select page">
+            </mat-paginator>
+        </section>
+        
+    </mat-tab>
+    <mat-tab label="Crear productos">
+        <app-product-create [formularioTicket]="formularioTicket"></app-product-create>
+    </mat-tab>
+  </mat-tab-group>
